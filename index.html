@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceptions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  </head>
+
+<body>
+  <div class="app">
+    <form id="newItem">
+      <textarea id="note" autofocus="true" placeholder="What's on your mind?"></textarea>
+
+      <div class="newItemControls">
+        <div class="sentimentSelect">
+
+          <label for="angry" class="sentimentLabel">
+            <input type="radio" id="angry" name="sentiment" value="angry">
+
+            <img class="bg" src="./assets/angry_bg.png" alt="background" />
+            <img src="./assets/angry_fg.png" alt="angry" />
+          </label>
+
+          <label for="sad" class="sentimentLabel">
+            <input type="radio" id="sad" name="sentiment" value="sad">
+
+            <img class="bg" src="./assets/sad_bg.png" alt="background" />
+            <img src="./assets/sad_fg.png" alt="sad" />
+          </label>
+
+          <label for="neutral" class="sentimentLabel">
+            <input type="radio" id="neutral" name="sentiment" value="neutral">
+
+            <img class="bg" src="./assets/neutral_bg.png" alt="background" />
+            <img src="./assets/neutral_fg.png" alt="neutral" />
+          </label>
+
+          <label for="good" class="sentimentLabel">
+            <input type="radio" id="good" name="sentiment" value="good">
+
+            <img class="bg" src="./assets/good_bg.png" alt="background" />
+            <img src="./assets/good_fg.png" alt="good" />
+          </label>
+
+          <label for="happy" class="sentimentLabel">
+            <input type="radio" id="happy" name="sentiment" value="happy">
+
+            <img class="bg" src="./assets/happy_bg.png" alt="background" />
+            <img src="./assets/happy_fg.png" alt="happy" />
+          </label>
+        </div>
+
+        <button onclick="submitNote()" class="actionButton">↩</button>
+
+      </div>
+    </form>
+    <div id="list"></div>
+  </div>
+  <script src="db.js"></script>
+
+</body>
+
+</html>
