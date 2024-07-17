@@ -42,10 +42,18 @@ function addItem(db, itemText, category) {
 }
 
 function submitItem() {
-  let itemText = document.getElementById("newItemText");
-  let sentiment = document.querySelector(`input[name="sentiment"]:checked`);
-  addItem(db, itemText.value, sentiment.value);
-  itemText.value = "";
+  document
+    .getElementById("newItem")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      let itemText = document.getElementById("newItemText").value;
+      let sentiment = document.querySelector(
+        `input[name="sentiment"]:checked`
+      ).value;
+
+      addItem(db, itemText, sentiment);
+      document.getElementById("newItemText").value = "";
+    });
 }
 
 function getAndDisplayItems(db) {
