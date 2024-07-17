@@ -1,9 +1,20 @@
 let db;
-let dbReq = indexedDB.open("db", 1);
+let dbReq = indexedDB.open("database", 2);
 
 dbReq.onupgradeneeded = function (event) {
   db = event.target.result;
-  let items = db.createObjectStore("sentiments", { autoIncrement: true });
+
+  let items;
+  if (!db.objectStoreNames.contains("sentiments")) {
+    items = db.createObjectStore("sentiments", { autoIncrement: true });
+  } else {
+    items = dbReq.transaction.objectStore("sentiments");
+  }
+
+  if (!items.indexNames.contains("timestamp")) {
+    console.log("createIndex");
+    items.createIndex("timestamp", "timestamp");
+  }
 };
 
 dbReq.onsuccess = function (event) {
@@ -20,7 +31,9 @@ function addItem(db, itemText, category) {
   let store = tx.objectStore("sentiments");
   let item = { text: itemText, type: category, timestamp: Date.now() };
   store.add(item);
-  tx.oncomplete = function () {
+
+  tx.oncomplete = function (event) {
+    item.key = event.target.result; // Store the generated key
     getAndDisplayItems(db);
   };
   tx.onerror = function (event) {
@@ -44,6 +57,8 @@ function getAndDisplayItems(db) {
   req.onsuccess = function (event) {
     let cursor = event.target.result;
     if (cursor != null) {
+      let item = cursor.value;
+      item.key = cursor.key;
       allItems.push(cursor.value);
       cursor.continue();
     } else {
@@ -57,10 +72,10 @@ function getAndDisplayItems(db) {
 
 function displayItems(items) {
   let itemsList = "";
-  oldDate = "";
+  let oldDate = "";
   for (let i = items.length - 1; i >= 0; i--) {
     let item = items[i];
-    newDate = new Date(item.timestamp).getDate();
+    let newDate = new Date(item.timestamp).getDate();
 
     if (newDate != oldDate) {
       itemsList +=
@@ -89,7 +104,25 @@ function displayItems(items) {
       timeString +
       "</div><div class='itemText'>" +
       item.text +
-      "</div></div></div>";
+      "</div></div><div class='itemDelete' onClick='deleteItem(" +
+      item.key +
+      ")'>Delete</div></div>";
   }
   document.getElementById("list").innerHTML = itemsList;
+}
+
+function deleteItem(key) {
+  const tx = db.transaction(["sentiments"], "readwrite");
+  const store = tx.objectStore("sentiments");
+
+  const deleteRequest = store.delete(key);
+
+  deleteRequest.onsuccess = function (event) {
+    console.log("Item deleted successfully");
+    getAndDisplayItems(db);
+  };
+
+  deleteRequest.onerror = function (event) {
+    console.error("Delete error:", event.target.errorCode);
+  };
 }

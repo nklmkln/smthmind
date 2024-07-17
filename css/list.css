@@ -31,19 +31,18 @@
 
 .item {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     flex-shrink: 0;
 
     overflow: hidden;
 
     padding: var(--space-sm) var(--space-lg);
     width: 100%;
-    max-width: 52rem;
 }
 
 .itemSentiment {
-    width: 1.875rem;
-    height: 1.875rem;
+    width: 2rem;
+    height: 2rem;
 
     margin-top: var(--space-xs);
 }
@@ -53,11 +52,11 @@
     flex-direction: column;
 
     width: 100%;
-    margin-top: 0.25rem;
 }
 
 .itemText {
     width: 100%;
+    max-width: 52rem;
 
     font-size: medium;
     color: var(--text-primary);
@@ -68,9 +67,28 @@
     color: var(--text-secondary);
 }
 
-@media (max-width: var(--mob-breakpoint)) {
+.itemDelete {
+    flex-shrink: 0;
+
+    font-size: small;
+    color: var(--text-secondary);
+
+    opacity: 0;
+}
+
+.itemDelete:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.item:hover > .itemDelete {
+    opacity: 1;
+}
+
+
+@media (max-width: 920px) {
     #list {
         width: 100%;
-        height: 77svh;
+        height: 65svh;
     }
 }
