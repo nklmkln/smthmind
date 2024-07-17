@@ -34,12 +34,12 @@ body {
     outline: var(--border-width) var(--border) solid;
 }
 
-#note {
+#newItemText {
     flex: 1;
 
     padding: var(--space-lg) var(--space-lg) 0 var(--space-lg);
     font-size: x-large;
-    line-height: 2.2rem;
+    line-height: 145%;
     resize: none;
 
 
@@ -49,8 +49,12 @@ body {
     border: none;
 }
 
-#note:focus {
+#newItemText:focus {
     outline: none;
+}
+
+#newItemText::placeholder {
+    color: var(--text-secondary);
 }
 
 .newItemControls {
@@ -166,7 +170,7 @@ input[type="radio"]:checked + img {
     
     width: 100%;
     padding: var(--space-md) var(--space-md) 0 var(--space-lg);
-    margin: var(--space-md) 0 var(--space-xs) 0;
+    margin-top: var(--space-md);
 
     font-size: small;
     font-weight: 600;
@@ -211,7 +215,6 @@ input[type="radio"]:checked + img {
     width: 100%;
 
     font-size: medium;
-    line-height: 1.5rem;
     color: var(--text-primary);
 }
 
@@ -223,6 +226,7 @@ input[type="radio"]:checked + img {
 :root {
     font-family: Inter, sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+    line-height: 145%;
 
     --background: #eee;
     --text-primary: #333;
@@ -256,7 +260,7 @@ input[type="radio"]:checked + img {
         background-color: var(--background);
     }
 
-    #note {
+    #newItemText {
         font-size: larger;
         line-height: normal;
     }

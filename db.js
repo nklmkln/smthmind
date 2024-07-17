@@ -1,9 +1,9 @@
 let db;
-let dbReq = indexedDB.open("database", 1);
+let dbReq = indexedDB.open("db", 1);
 
 dbReq.onupgradeneeded = function (event) {
   db = event.target.result;
-  let notes = db.createObjectStore("messages", { autoIncrement: true });
+  let items = db.createObjectStore("sentiments", { autoIncrement: true });
 };
 
 dbReq.onsuccess = function (event) {
@@ -15,10 +15,10 @@ dbReq.onerror = function (event) {
   alert("error opening database " + event.target.errorCode);
 };
 
-function addNote(db, message, category) {
-  let tx = db.transaction(["messages"], "readwrite");
-  let store = tx.objectStore("messages");
-  let item = { text: message, type: category, timestamp: Date.now() };
+function addItem(db, itemText, category) {
+  let tx = db.transaction(["sentiments"], "readwrite");
+  let store = tx.objectStore("sentiments");
+  let item = { text: itemText, type: category, timestamp: Date.now() };
   store.add(item);
   tx.oncomplete = function () {
     getAndDisplayItems(db);
@@ -28,26 +28,26 @@ function addNote(db, message, category) {
   };
 }
 
-function submitNote() {
-  let note = document.getElementById("note");
+function submitItem() {
+  let itemText = document.getElementById("newItemText");
   let sentiment = document.querySelector(`input[name="sentiment"]:checked`);
-  addNote(db, note.value, sentiment.value);
-  note.value = "";
+  addItem(db, itemText.value, sentiment.value);
+  itemText.value = "";
 }
 
 function getAndDisplayItems(db) {
-  let tx = db.transaction(["messages"], "readonly");
-  let store = tx.objectStore("messages");
+  let tx = db.transaction(["sentiments"], "readonly");
+  let store = tx.objectStore("sentiments");
   let req = store.openCursor();
-  let allNotes = [];
+  let allItems = [];
 
   req.onsuccess = function (event) {
     let cursor = event.target.result;
     if (cursor != null) {
-      allNotes.push(cursor.value);
+      allItems.push(cursor.value);
       cursor.continue();
     } else {
-      displayItems(allNotes);
+      displayItems(allItems);
     }
   };
   req.onerror = function (event) {
