@@ -1,0 +1,76 @@
+#list {
+    display: flex;
+    flex-direction: column;
+
+    width: 65%;
+
+    overflow-y: scroll;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    width: 100%;
+    padding: var(--space-md) var(--space-md) 0 var(--space-lg);
+    margin-top: var(--space-md);
+
+    font-size: small;
+    font-weight: 600;
+    color: var(--text-secondary);
+
+    border-top: var(--border) var(--border-width) solid;
+}
+
+.date:first-of-type {
+    margin-top: 0;
+    border-top: none;
+}
+
+.item {
+    display: flex;
+    gap: var(--space-md);
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    padding: var(--space-sm) var(--space-lg);
+    width: 100%;
+    max-width: 52rem;
+}
+
+.itemSentiment {
+    width: 1.875rem;
+    height: 1.875rem;
+
+    margin-top: var(--space-xs);
+}
+
+.itemContent {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-top: 0.25rem;
+}
+
+.itemText {
+    width: 100%;
+
+    font-size: medium;
+    color: var(--text-primary);
+}
+
+.itemTime {
+    font-size: small;
+    color: var(--text-secondary);
+}
+
+@media (max-width: var(--mob-breakpoint)) {
+    #list {
+        width: 100%;
+        height: 77svh;
+    }
+}
