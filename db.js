@@ -109,13 +109,13 @@ function displayItems(items) {
       item.type +
       ".png' alt='" +
       item.type +
-      "' /><div class='itemContent'><div class='itemTime'>" +
+      "' /><div class='itemContent'><div class='itemHeader'><div class='itemTime'>" +
       timeString +
-      "</div><div class='itemText'>" +
-      item.text +
-      "</div></div><div class='itemDelete' onClick='deleteItem(" +
+      "</div><div class='itemDelete' onClick='deleteItem(" +
       item.key +
-      ")'>Delete</div></div>";
+      ")'>Delete</div></div><div class='itemText'>" +
+      item.text +
+      "</div></div></div>";
   }
   document.getElementById("list").innerHTML = itemsList;
 }

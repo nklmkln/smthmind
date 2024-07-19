@@ -22,6 +22,14 @@ body {
     height: 100svh;
 }
 
+#history {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    
+    height: 100svh;
+}
+
 
 :root {
     font-family: Inter, sans-serif;
