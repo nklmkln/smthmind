@@ -45,7 +45,7 @@
 
     overflow: hidden;
 
-    padding: var(--space-sm) var(--space-xl) var(--space-sm) var(--space-lg);
+    padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-lg);
     width: 100%;
 }
 
@@ -107,5 +107,9 @@
     #list {
         width: 100%;
         height: 65svh;
+    }
+
+    .itemDelete {
+        opacity: 1;
     }
 }
