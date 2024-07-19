@@ -41,7 +41,7 @@ function addItem(db, itemText, category) {
   };
 }
 
-function submitItem() {
+document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("newItem")
     .addEventListener("submit", function (event) {
@@ -53,8 +53,9 @@ function submitItem() {
 
       addItem(db, itemText, sentiment);
       document.getElementById("newItemText").value = "";
+      document.querySelector(`input[name="sentiment"]:checked`).checked = false;
     });
-}
+});
 
 function getAndDisplayItems(db) {
   let tx = db.transaction(["sentiments"], "readonly");
