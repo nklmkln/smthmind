@@ -22,12 +22,10 @@ body {
     height: 100svh;
 }
 
-#history {
+#wrapper {
     display: flex;
     flex-direction: column;
     flex: 1;
-    
-    height: 100svh;
 }
 
 
@@ -64,7 +62,9 @@ body {
         flex-direction: column-reverse;
     }
 
-    #history {
+    #wrapper {
         flex: 1;
+        
+        height: 0;
     }
 }
