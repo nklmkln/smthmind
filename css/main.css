@@ -58,3 +58,13 @@ body {
 @supports (font-variation-settings: normal) {
     :root { font-family: InterVariable, sans-serif; }
 }
+
+@media (max-width: 920px) {
+    .app {
+        flex-direction: column-reverse;
+    }
+
+    #history {
+        flex: 1;
+    }
+}

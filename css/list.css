@@ -104,11 +104,6 @@
 
 
 @media (max-width: 920px) {
-    #list {
-        width: 100%;
-        height: 65svh;
-    }
-
     .itemDelete {
         opacity: 1;
     }
