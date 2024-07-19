@@ -112,4 +112,8 @@
     .itemDelete {
         opacity: 1;
     }
+
+    .itemDelete:hover {
+        text-decoration: none;
+    }
 }
