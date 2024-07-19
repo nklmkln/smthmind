@@ -13,6 +13,9 @@
 
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <link rel="canonical" href="https://nklmkln.github.io/sentiments/" />
+    <link rel="manifest" href="/sentiments/manifest.webmanifest">
   </head>
 
 <body>
@@ -69,6 +72,15 @@
     </div>
 
   </div>
+
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register(
+        '/sentiments/sw.js',
+        { scope: '/sentiments/' }
+      )
+    }
+  </script>
   <script src="db.js"></script>
 
 </body>

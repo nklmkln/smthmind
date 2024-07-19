@@ -1,0 +1,19 @@
+{
+    "name": "Sentiments",
+    "short_name": "Senti",
+    "description": "Write down how you feel during the day.",
+    "scope": "/sentiments/",
+    "start_url": "/sentiments/",
+    "background_color": "#eeeeee",
+    "theme_color": "#eeeeee",
+  
+    "display": "standalone", 
+    
+    "icons": [
+        {
+          "src": "/sentiments/assets/icon512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+    ]
+  }
