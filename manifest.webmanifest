@@ -1,6 +1,6 @@
 {
     "name": "Sentiments",
-    "short_name": "Senti",
+    "short_name": "Sentiments",
     "description": "Write down how you feel during the day.",
     "scope": "/sentiments/",
     "start_url": "/sentiments/",

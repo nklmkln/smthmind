@@ -2,7 +2,7 @@ var GHPATH = "/sentiments";
 
 var APP_PREFIX = "senti_";
 
-var VERSION = "version_001";
+var VERSION = "version_002";
 
 var URLS = [
   `${GHPATH}/`,
@@ -18,7 +18,7 @@ var URLS = [
   `${GHPATH}/assets/sad_fg.png`,
   `${GHPATH}/assets/sad.png`,
   `${GHPATH}/assets/neutral_bg.png`,
-  `${GHPATH}/assets/neutral.png`,
+  `${GHPATH}/assets/neutral_fg.png`,
   `${GHPATH}/assets/neutral.png`,
   `${GHPATH}/assets/good_bg.png`,
   `${GHPATH}/assets/good_fg.png`,
