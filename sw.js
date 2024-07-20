@@ -2,7 +2,7 @@ var GHPATH = "/smthmind";
 
 var APP_PREFIX = "smthmind_";
 
-var VERSION = "version_003";
+var VERSION = "version_004";
 
 var URLS = [
   `${GHPATH}/`,
