@@ -12,7 +12,6 @@ dbReq.onupgradeneeded = function (event) {
   }
 
   if (!items.indexNames.contains("timestamp")) {
-    console.log("createIndex");
     items.createIndex("timestamp", "timestamp");
   }
 };
