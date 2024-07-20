@@ -1,8 +1,8 @@
-var GHPATH = "/sentiments";
+var GHPATH = "/smthmind";
 
-var APP_PREFIX = "senti_";
+var APP_PREFIX = "smthmind_";
 
-var VERSION = "version_002";
+var VERSION = "version_003";
 
 var URLS = [
   `${GHPATH}/`,

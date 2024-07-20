@@ -1,9 +1,9 @@
 {
-    "name": "Sentiments",
-    "short_name": "Sentiments",
+    "name": "Something from your mind",
+    "short_name": "smthmind",
     "description": "Write down how you feel during the day.",
-    "scope": "/sentiments/",
-    "start_url": "/sentiments/",
+    "scope": "/smthmind/",
+    "start_url": "/smthmind/",
     "background_color": "#eeeeee",
     "theme_color": "#eeeeee",
   
@@ -11,7 +11,7 @@
     
     "icons": [
         {
-          "src": "/sentiments/assets/icon512.png",
+          "src": "/smthmind/assets/icon512.png",
           "type": "image/png",
           "sizes": "512x512"
         }
