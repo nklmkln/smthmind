@@ -131,9 +131,9 @@ input[type="radio"]:checked + img {
 @media (max-width: 920px) {
     #newItem {
         width: 100%;
-        height: 40svh;
+        height: 42svh;
 
-        background-color: var(--background);
+        padding-bottom: var(--space-sm);
     }
 
     #newItemText {
