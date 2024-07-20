@@ -1,24 +1,22 @@
 {
-    "name": "Something from your mind",
-    "short_name": "smthmind",
-    "description": "Write down how you feel during the day.",
-    "scope": "/smthmind/",
-    "start_url": "/smthmind/",
-    "background_color": "#eeeeee",
-    "theme_color": "#eeeeee",
+  "name": "Something from Your Mind",
+  "short_name": "smthmind",
+  "start_url": "https://smthmind.com",
+  "scope": "https://smthmind.com/",
+  "lang": "en-GB",
+  "theme_color": "#eeeeee",
+  "display": "standalone",
   
-    "display": "standalone", 
-    
-    "icons": [
-        {
-          "src": "/smthmind/assets/icon192.png",
-          "type": "image/png",
-          "sizes": "192x192"
-        },
-        {
-          "src": "/smthmind/assets/icon512.png",
-          "type": "image/png",
-          "sizes": "512x512"
-        }
-    ]
-  }
+  "icons": [
+      {
+        "src": "assets/icon512.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "assets/icon512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+  ]
+}
