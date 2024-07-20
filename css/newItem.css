@@ -134,7 +134,6 @@ input[type="radio"]:checked + img {
         height: 40svh;
 
         background-color: var(--background);
-        padding-bottom: var(--space-xl);
     }
 
     #newItemText {
