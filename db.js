@@ -25,14 +25,19 @@ dbReq.onerror = function (event) {
   alert("error opening database " + event.target.errorCode);
 };
 
-function addItem(db, itemText, category) {
+function addItem(db, itemText, sentiment, itemTag) {
   let tx = db.transaction(["sentiments"], "readwrite");
   let store = tx.objectStore("sentiments");
-  let item = { text: itemText, type: category, timestamp: Date.now() };
+  let item = {
+    text: itemText,
+    type: sentiment,
+    tag: itemTag,
+    timestamp: Date.now(),
+  };
   store.add(item);
 
   tx.oncomplete = function (event) {
-    item.key = event.target.result; // Store the generated key
+    item.key = event.target.result;
     getAndDisplayItems(db);
   };
   tx.onerror = function (event) {
@@ -45,12 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("newItem")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+      let itemTag = document.getElementById("newItemTag").value;
       let itemText = document.getElementById("newItemText").value;
       let sentiment = document.querySelector(
         `input[name="sentiment"]:checked`
       ).value;
 
-      addItem(db, itemText, sentiment);
+      addItem(db, itemText, sentiment, itemTag);
+      document.getElementById("newItemTag").value = "";
       document.getElementById("newItemText").value = "";
       document.querySelector(`input[name="sentiment"]:checked`).checked = false;
     });

@@ -27,7 +27,6 @@
     margin-top: var(--space-md);
 
     font-size: small;
-    font-weight: 600;
     color: var(--text-secondary);
 
     border-top: var(--border) var(--border-width) solid;

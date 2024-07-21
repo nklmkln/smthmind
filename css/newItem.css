@@ -5,29 +5,39 @@
     width: 40%;
     height: 100%;
     max-height: 100svh;
+    padding: var(--space-md);
 
     outline: var(--border-width) var(--border) solid;
+}
+
+#newItemTag {
+    font-size: small;
+    color: var(--text-primary);
+    line-height: var(--line-height-base);
+    text-transform: uppercase;
+
+    background-color: var(--background);
+    border: none;
 }
 
 #newItemText {
     flex: 1;
 
-    padding: var(--space-lg) var(--space-xl) 0 var(--space-lg);
     font-size: x-large;
     line-height: var(--line-height-base);
     resize: none;
-
     color: var(--text-primary);
 
+    padding: var(--space-xs) var(--space-lg) 0 0;
     background-color: var(--main);
     border: none;
 }
 
-#newItemText:focus {
+#newItemText:focus, #newItemTag:focus {
     outline: none;
 }
 
-#newItemText::placeholder {
+#newItemText::placeholder, #newItemTag::placeholder {
     color: var(--text-secondary);
 }
 
@@ -37,7 +47,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: var(--space-md);
+    padding-top: var(--space-md);
 }
 
 .sentimentSelect {
