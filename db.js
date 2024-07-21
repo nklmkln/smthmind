@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("newItem")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      let itemTag = document.getElementById("newItemTag").value;
+      let itemTag = document.getElementById("newItemTag").value.toUpperCase();
       let itemText = document.getElementById("newItemText").value;
       let sentiment = document.querySelector(
         `input[name="sentiment"]:checked`
@@ -110,13 +110,16 @@ function displayItems(items) {
       minute: "2-digit",
     });
 
+    const itemTag = item.tag == "" ? "" : ` → ${item.tag}`;
+
     itemsList +=
       "<div class='item'><img class='itemSentiment' src='./assets/" +
       item.type +
       ".png' alt='" +
       item.type +
-      "' /><div class='itemContent'><div class='itemHeader'><div class='itemTime'>" +
+      "' /><div class='itemContent'><div class='itemHeader'><div class='itemData'>" +
       timeString +
+      itemTag +
       "</div><div class='itemDelete' onClick='deleteItem(" +
       item.key +
       ")'>Delete</div></div><div class='itemText'>" +

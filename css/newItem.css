@@ -10,12 +10,25 @@
     outline: var(--border-width) var(--border) solid;
 }
 
+#tagWrapper {
+    display: flex;
+    flex-direction: row;
+    
+    height: 1.25rem;
+
+    font-size: small;
+    line-height: var(--line-height-base);
+    color: var(--text-secondary);
+}
+
 #newItemTag {
     font-size: small;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     line-height: var(--line-height-base);
     text-transform: uppercase;
+    width: 11rem;
 
+    padding: 0 0 0 4px;
     background-color: var(--background);
     border: none;
 }
@@ -39,6 +52,7 @@
 
 #newItemText::placeholder, #newItemTag::placeholder {
     color: var(--text-secondary);
+    opacity: 0.5;
 }
 
 .newItemControls {
