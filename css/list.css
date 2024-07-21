@@ -27,8 +27,8 @@
     margin-top: var(--space-md);
 
     font-size: small;
-    font-weight: 600;
     color: var(--text-secondary);
+    font-weight: 500;
 
     border-top: var(--border) var(--border-width) solid;
 }
@@ -79,7 +79,7 @@
     width: 100%;
 }
 
-.itemTime {
+.itemData {
     font-size: small;
     color: var(--text-secondary);
 }

@@ -25,14 +25,19 @@ dbReq.onerror = function (event) {
   alert("error opening database " + event.target.errorCode);
 };
 
-function addItem(db, itemText, category) {
+function addItem(db, itemText, sentiment, itemTag) {
   let tx = db.transaction(["sentiments"], "readwrite");
   let store = tx.objectStore("sentiments");
-  let item = { text: itemText, type: category, timestamp: Date.now() };
+  let item = {
+    text: itemText,
+    type: sentiment,
+    tag: itemTag,
+    timestamp: Date.now(),
+  };
   store.add(item);
 
   tx.oncomplete = function (event) {
-    item.key = event.target.result; // Store the generated key
+    item.key = event.target.result;
     getAndDisplayItems(db);
   };
   tx.onerror = function (event) {
@@ -45,12 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("newItem")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+      let itemTag = document.getElementById("newItemTag").value.toUpperCase();
       let itemText = document.getElementById("newItemText").value;
       let sentiment = document.querySelector(
         `input[name="sentiment"]:checked`
       ).value;
 
-      addItem(db, itemText, sentiment);
+      addItem(db, itemText, sentiment, itemTag);
+      document.getElementById("newItemTag").value = "";
       document.getElementById("newItemText").value = "";
       document.querySelector(`input[name="sentiment"]:checked`).checked = false;
     });
@@ -103,13 +110,16 @@ function displayItems(items) {
       minute: "2-digit",
     });
 
+    const itemTag = item.tag == "" ? "" : ` → ${item.tag}`;
+
     itemsList +=
       "<div class='item'><img class='itemSentiment' src='./assets/" +
       item.type +
       ".png' alt='" +
       item.type +
-      "' /><div class='itemContent'><div class='itemHeader'><div class='itemTime'>" +
+      "' /><div class='itemContent'><div class='itemHeader'><div class='itemData'>" +
       timeString +
+      itemTag +
       "</div><div class='itemDelete' onClick='deleteItem(" +
       item.key +
       ")'>Delete</div></div><div class='itemText'>" +
