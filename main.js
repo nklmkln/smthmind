@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
           text: itemText,
         })
         .then(getAndDisplayThoughts);
+      umami.track("record added");
 
       document.getElementById("newItemText").value = "";
       document.getElementById("newItemTag").value = "";
