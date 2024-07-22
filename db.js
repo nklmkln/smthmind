@@ -1,94 +1,54 @@
-let db;
-let dbReq = indexedDB.open("database", 2);
+var db = new Dexie("ThoughtsDatabase");
 
-dbReq.onupgradeneeded = function (event) {
-  db = event.target.result;
+db.version(1).stores({
+  thoughts: `
+      timestamp,
+      tag,
+      mood`,
+});
 
-  let items;
-  if (!db.objectStoreNames.contains("sentiments")) {
-    items = db.createObjectStore("sentiments", { autoIncrement: true });
-  } else {
-    items = dbReq.transaction.objectStore("sentiments");
-  }
-
-  if (!items.indexNames.contains("timestamp")) {
-    items.createIndex("timestamp", "timestamp");
-  }
-};
-
-dbReq.onsuccess = function (event) {
-  db = event.target.result;
-  getAndDisplayItems(db);
-};
-
-dbReq.onerror = function (event) {
-  alert("error opening database " + event.target.errorCode);
-};
-
-function addItem(db, itemText, sentiment, itemTag) {
-  let tx = db.transaction(["sentiments"], "readwrite");
-  let store = tx.objectStore("sentiments");
-  let item = {
-    text: itemText,
-    type: sentiment,
-    tag: itemTag,
-    timestamp: Date.now(),
-  };
-  store.add(item);
-
-  tx.oncomplete = function (event) {
-    item.key = event.target.result;
-    getAndDisplayItems(db);
-  };
-  tx.onerror = function (event) {
-    alert("error storing message " + event.target.errorCode);
-  };
-}
+db.open()
+  .then(() => {
+    getAndDisplayThoughts();
+  })
+  .catch((error) => {
+    console.error("Failed to open database:", error);
+  });
 
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("newItem")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      let itemTag = document.getElementById("newItemTag").value.toUpperCase();
       let itemText = document.getElementById("newItemText").value;
-      let sentiment = document.querySelector(
+      let itemTag = document.getElementById("newItemTag").value.toUpperCase();
+      let itemMood = document.querySelector(
         `input[name="sentiment"]:checked`
       ).value;
 
-      addItem(db, itemText, sentiment, itemTag);
-      document.getElementById("newItemTag").value = "";
+      db.thoughts
+        .add({
+          timestamp: Date.now(),
+          tag: itemTag,
+          mood: itemMood,
+          text: itemText,
+        })
+        .then(getAndDisplayThoughts);
+
       document.getElementById("newItemText").value = "";
+      document.getElementById("newItemTag").value = "";
       document.querySelector(`input[name="sentiment"]:checked`).checked = false;
     });
 });
 
-function getAndDisplayItems(db) {
-  let tx = db.transaction(["sentiments"], "readonly");
-  let store = tx.objectStore("sentiments");
-  let req = store.openCursor();
-  let allItems = [];
-
-  req.onsuccess = function (event) {
-    let cursor = event.target.result;
-    if (cursor != null) {
-      let item = cursor.value;
-      item.key = cursor.key;
-      allItems.push(cursor.value);
-      cursor.continue();
-    } else {
-      displayItems(allItems);
-    }
-  };
-  req.onerror = function (event) {
-    alert("error in cursor request " + event.target.errorCode);
-  };
+function getAndDisplayThoughts() {
+  db.thoughts.reverse().toArray().then(displayThoughts);
 }
 
-function displayItems(items) {
+function displayThoughts(items) {
   let itemsList = "";
   let oldDate = "";
-  for (let i = items.length - 1; i >= 0; i--) {
+  for (let i = 0; i < items.length; i++) {
     let item = items[i];
     let newDate = new Date(item.timestamp).getDate();
 
@@ -114,14 +74,14 @@ function displayItems(items) {
 
     itemsList +=
       "<div class='item'><img class='itemSentiment' src='./assets/" +
-      item.type +
+      item.mood +
       ".png' alt='" +
       item.type +
       "' /><div class='itemContent'><div class='itemHeader'><div class='itemData'>" +
       timeString +
       itemTag +
       "</div><div class='itemDelete' onClick='deleteItem(" +
-      item.key +
+      item.timestamp +
       ")'>Delete</div></div><div class='itemText'>" +
       item.text +
       "</div></div></div>";
@@ -129,18 +89,6 @@ function displayItems(items) {
   document.getElementById("list").innerHTML = itemsList;
 }
 
-function deleteItem(key) {
-  const tx = db.transaction(["sentiments"], "readwrite");
-  const store = tx.objectStore("sentiments");
-
-  const deleteRequest = store.delete(key);
-
-  deleteRequest.onsuccess = function (event) {
-    console.log("Item deleted successfully");
-    getAndDisplayItems(db);
-  };
-
-  deleteRequest.onerror = function (event) {
-    console.error("Delete error:", event.target.errorCode);
-  };
+function deleteItem(timestamp) {
+  db.thoughts.delete(timestamp).then(getAndDisplayThoughts);
 }
