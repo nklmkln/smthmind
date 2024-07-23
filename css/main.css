@@ -12,6 +12,7 @@ body {
 
     background-color: var(--background);
 
+    color: var(--text-primary);
 }
 
 .app {

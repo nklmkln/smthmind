@@ -160,7 +160,7 @@ input[type="radio"]:checked + img {
         height: 44svh;
 
         padding-top: var(--space-sm);
-        padding-bottom: var(--space-lg);
+        padding-bottom: var(--space-xl);
     }
 
     #tagWrapper {

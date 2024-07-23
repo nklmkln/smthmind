@@ -44,6 +44,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getAndDisplayThoughts() {
   db.thoughts.reverse().toArray().then(displayThoughts);
+  document.getElementById("listFilter").innerHTML = "";
+}
+
+function filterThoughts(filter, value) {
+  db.thoughts
+    .where(filter)
+    .equals(value)
+    .reverse()
+    .toArray()
+    .then(displayThoughts);
+
+  document.getElementById("listFilter").innerHTML = " → " + value;
 }
 
 function displayThoughts(items) {
@@ -71,7 +83,10 @@ function displayThoughts(items) {
       minute: "2-digit",
     });
 
-    const itemTag = item.tag == "" ? "" : ` → ${item.tag}`;
+    const itemTag =
+      item.tag == ""
+        ? ""
+        : ` → <div class='itemTag' onClick='filterThoughts("tag", "${item.tag}")'>${item.tag}</div>`;
 
     itemsList +=
       "<div class='item'><img class='itemSentiment' src='./assets/" +
@@ -83,7 +98,7 @@ function displayThoughts(items) {
       itemTag +
       "</div><div class='itemDelete' onClick='deleteItem(" +
       item.timestamp +
-      ")'>Delete</div></div><div class='itemText'>" +
+      ")'></div></div><div class='itemText'>" +
       item.text +
       "</div></div></div>";
   }

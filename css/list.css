@@ -1,8 +1,43 @@
-.listHeader {
+#listHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
     width: 100%;
-    padding: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+
+    font-size: small;
+    color: var(--text-secondary);
+    line-height: var(--line-height-base);
 
     border-bottom: var(--border-width) var(--border) solid;
+}
+
+#listFilter {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+    flex: 1;
+}
+
+#clearFilter {
+    cursor: pointer;
+}
+
+#clearFilter:hover {
+    text-decoration: underline;
+}
+
+.menuItem {
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.menuItem:hover {
+    transform: scale(1.2);
+
+    transition: 0.3s ease;
 }
 
 #list {
@@ -23,7 +58,7 @@
     justify-content: flex-start;
     
     width: 100%;
-    padding: var(--space-lg) var(--space-md) 0 var(--space-lg);
+    padding: var(--space-md) var(--space-md) 0 var(--space-lg);
     margin-top: var(--space-md);
 
     font-size: small;
@@ -80,8 +115,17 @@
 }
 
 .itemData {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+
     font-size: small;
     color: var(--text-secondary);
+}
+
+.itemTag:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .itemDelete {
@@ -91,11 +135,15 @@
     color: var(--text-secondary);
 
     opacity: 0;
+
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .itemDelete:hover {
-    text-decoration: underline;
-    cursor: pointer;
+    transform: scale(1.2);
+
+    transition: 0.3s ease;
 }
 
 .item:hover .itemDelete {
@@ -104,11 +152,19 @@
 
 
 @media (max-width: 920px) {
+    #listHeader {
+        padding: var(--space-md) var(--space-lg) var(--space-sm) var(--space-lg);
+    }
+    
     .itemDelete {
         opacity: 1;
     }
 
-    .itemDelete:hover {
+    #listFilter:hover, #clearFilter:hover, .itemTag:hover {
         text-decoration: none;
+    }
+
+    .menuItem:hover, .itemDelete:hover {
+        transform: none;
     }
 }
