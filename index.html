@@ -110,6 +110,7 @@
 
       </div>
     </form>
+
     <div id="wrapper">
       <div id="listHeader">
         <div id="listFilter"></div>
@@ -122,14 +123,6 @@
 
   </div>
 
-  <script>
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register(
-        '/sw.js',
-        { scope: '/' }
-      )
-    }
-  </script>
   <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
   <script src="https://unpkg.com/dexie-export-import/dist/dexie-export-import.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
