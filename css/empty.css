@@ -1,0 +1,24 @@
+#emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--text-secondary);
+    font-size: var(--font-sm);
+    line-height: var(--line-height-base);
+}
+
+#emptyState img {
+    width: 10rem;
+    height: 10rem;
+    margin: var(--space-xl) 0 0 0;
+}
+
+#emptyState p {
+    text-align: center;
+    max-width: 20rem;
+}

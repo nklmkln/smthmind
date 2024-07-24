@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function getAndDisplayThoughts() {
   db.thoughts.reverse().toArray().then(displayThoughts);
   document.getElementById("clearFilter").innerHTML = "";
-  document.getElementById("listFilter").innerHTML = "EVERYTHING AT ONCE";
+  document.getElementById("listFilter").innerHTML = "MY THOUGHTS";
+  document.getElementById("exportLink").innerHTML = "↓ Export";
 }
 
 function filterThoughts(filter, value) {
@@ -56,55 +57,62 @@ function filterThoughts(filter, value) {
     .toArray()
     .then(displayThoughts);
 
-  document.getElementById("clearFilter").innerHTML = "&nbsp;";
+  document.getElementById("clearFilter").innerHTML = "Clear";
   document.getElementById("listFilter").innerHTML = value;
+  document.getElementById("exportLink").innerHTML = "";
 }
 
 function displayThoughts(items) {
   let itemsList = "";
   let oldDate = "";
-  for (let i = 0; i < items.length; i++) {
-    let item = items[i];
-    let newDate = new Date(item.timestamp).getDate();
+  if (items.length == 0) {
+    document.getElementById("list").innerHTML =
+      "<div id='emptyState'><img src='assets/empty.png' alt='smthmind logo' /><p>Record your thoughts and mood for reflection. Everything is stored locally in your browser. Export data when you need it.</p></div>";
+    document.getElementById("exportLink").innerHTML = "";
+  } else {
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+      let newDate = new Date(item.timestamp).getDate();
 
-    if (newDate != oldDate) {
+      if (newDate != oldDate) {
+        itemsList +=
+          "<div class='date'>" +
+          new Date(item.timestamp).getDate() +
+          "." +
+          new Date(item.timestamp).getMonth() +
+          "." +
+          new Date(item.timestamp).getFullYear() +
+          "</div>";
+      }
+
+      oldDate = new Date(item.timestamp).getDate();
+
+      const timeString = new Date(item.timestamp).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      const itemTag =
+        item.tag == ""
+          ? ""
+          : ` → <div class='itemTag' onClick='filterThoughts("tag", "${item.tag}")'>${item.tag}</div>`;
+
       itemsList +=
-        "<div class='date'>" +
-        new Date(item.timestamp).getDate() +
-        "." +
-        new Date(item.timestamp).getMonth() +
-        "." +
-        new Date(item.timestamp).getFullYear() +
-        "</div>";
+        "<div class='item'><img class='itemSentiment' src='assets/" +
+        item.mood +
+        ".png' alt='" +
+        item.mood +
+        "' /><div class='itemContent'><div class='itemHeader'><div class='itemData'>" +
+        timeString +
+        itemTag +
+        "</div><div class='itemDelete' onClick='deleteItem(" +
+        item.timestamp +
+        ")'>⊗</div></div><div class='itemText'>" +
+        item.text +
+        "</div></div></div>";
     }
-
-    oldDate = new Date(item.timestamp).getDate();
-
-    const timeString = new Date(item.timestamp).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-
-    const itemTag =
-      item.tag == ""
-        ? ""
-        : ` → <div class='itemTag' onClick='filterThoughts("tag", "${item.tag}")'>${item.tag}</div>`;
-
-    itemsList +=
-      "<div class='item'><img class='itemSentiment' src='assets/" +
-      item.mood +
-      ".png' alt='" +
-      item.mood +
-      "' /><div class='itemContent'><div class='itemHeader'><div class='itemData'>" +
-      timeString +
-      itemTag +
-      "</div><div class='itemDelete' onClick='deleteItem(" +
-      item.timestamp +
-      ")'></div></div><div class='itemText'>" +
-      item.text +
-      "</div></div></div>";
+    document.getElementById("list").innerHTML = itemsList;
   }
-  document.getElementById("list").innerHTML = itemsList;
 }
 
 function deleteItem(timestamp) {
