@@ -22,6 +22,7 @@
     <link rel="manifest" href="manifest.webmanifest">
 
     <title>Something from Your Mind</title>
+    <meta name="application-name" content="smthmind">
     <meta name="description"
       content="A space to collect your thoughts locally on your device and revisit them for reflection">
 
@@ -111,6 +112,7 @@
       <div id="listHeader">
         <span id='clearFilter' onClick='getAndDisplayThoughts()'>ALL THOUGHTS</span>
         <div id="listFilter"></div>
+        <div class="menuItem" id="exportLink"></div>
         <div class="menuItem"></div>
       </div>
       <div id="list"></div>
@@ -127,6 +129,9 @@
     }
   </script>
   <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+  <script src="https://unpkg.com/dexie-export-import/dist/dexie-export-import.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
+
   <script src="main.js"></script>
 
 </body>
