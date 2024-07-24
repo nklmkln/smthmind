@@ -29,7 +29,7 @@
     line-height: var(--line-height-base);
     text-transform: uppercase;
 
-    padding: 0 0 0 4px;
+    padding: 0 0 0 0.25rem;
     background-color: var(--background);
     border: none;
 }
@@ -143,7 +143,7 @@ input[type="radio"]:checked + img {
     background-color: var(--text-primary);
     border-radius: 1.5rem;
 
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 .actionButton:hover {
@@ -151,13 +151,13 @@ input[type="radio"]:checked + img {
 
     transform: scale(1.2);
     
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 @media (max-width: 920px) {
     #newItem {
         width: 100%;
-        height: 44svh;
+        height: 37svh;
 
         padding-top: var(--space-sm);
         padding-bottom: var(--space-xl);

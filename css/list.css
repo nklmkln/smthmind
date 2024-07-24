@@ -1,7 +1,6 @@
 #listHeader {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
 
     width: 100%;
     padding: var(--space-md) var(--space-lg);
@@ -25,19 +24,20 @@
 }
 
 #clearFilter:hover {
-    text-decoration: underline;
+    color: var(--text-primary);
 }
 
 .menuItem {
-    cursor: pointer;
+    margin-left: var(--space-sm);
 
-    transition: 0.3s ease;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .menuItem:hover {
-    transform: scale(1.2);
+    color: var(--text-primary);
 
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 #list {
@@ -123,9 +123,12 @@
     color: var(--text-secondary);
 }
 
-.itemTag:hover {
+.itemTag {
     cursor: pointer;
-    text-decoration: underline;
+}
+
+.itemTag:hover {
+    color: var(--text-primary);
 }
 
 .itemDelete {
@@ -137,13 +140,13 @@
     opacity: 0;
 
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 .itemDelete:hover {
-    transform: scale(1.2);
+    color: var(--text-primary);
 
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 .item:hover .itemDelete {
@@ -161,10 +164,14 @@
     }
 
     #listFilter:hover, #clearFilter:hover, .itemTag:hover {
-        text-decoration: none;
+        color: var(--text-secondary);
     }
 
     .menuItem:hover, .itemDelete:hover {
-        transform: none;
+        color: var(--text-secondary);
+    }
+
+    .menuItemDescription {
+        display: none;
     }
 }
