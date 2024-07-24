@@ -68,7 +68,6 @@ function displayThoughts(items) {
   if (items.length == 0) {
     document.getElementById("list").innerHTML =
       "<div id='emptyState'><img src='assets/empty.png' alt='smthmind logo' /><p>Record your thoughts and mood for reflection. Everything is stored locally in your browser. Export data when you need it.</p></div>";
-    document.getElementById("exportLink").innerHTML = "";
   } else {
     for (let i = 0; i < items.length; i++) {
       let item = items[i];
@@ -107,11 +106,12 @@ function displayThoughts(items) {
         itemTag +
         "</div><div class='itemDelete' onClick='deleteItem(" +
         item.timestamp +
-        ")'>⊗</div></div><div class='itemText'>" +
+        ")'>Delete</div></div><div class='itemText'>" +
         item.text +
         "</div></div></div>";
     }
     document.getElementById("list").innerHTML = itemsList;
+    document.getElementById("listHeader").style.display = "flex";
   }
 }
 

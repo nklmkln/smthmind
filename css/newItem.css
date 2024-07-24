@@ -143,7 +143,6 @@ input[type="radio"]:checked + img {
     background-color: var(--text-primary);
     border-radius: 1.5rem;
 
-    transition: 0.2s ease;
 }
 
 .actionButton:hover {
@@ -151,7 +150,6 @@ input[type="radio"]:checked + img {
 
     transform: scale(1.2);
     
-    transition: 0.2s ease;
 }
 
 @media (max-width: 920px) {

@@ -1,5 +1,5 @@
 #listHeader {
-    display: flex;
+    display: none;
     align-items: center;
 
     width: 100%;
@@ -21,8 +21,9 @@
 #clearFilter {
     flex: 1;
 
-    cursor: pointer;
     margin-left: var(--space-xs);
+
+    cursor: pointer;
 }
 
 #clearFilter:hover {
@@ -33,13 +34,11 @@
     margin-left: var(--space-sm);
 
     cursor: pointer;
-    transition: 0.2s ease;
 }
 
 .menuItem:hover {
     color: var(--text-primary);
 
-    transition: 0.2s ease;
 }
 
 #list {
@@ -139,20 +138,12 @@
     font-size: var(--font-sm);
     color: var(--text-secondary);
 
-    opacity: 0;
-
     cursor: pointer;
-    transition: 0.2s ease;
 }
 
 .itemDelete:hover {
     color: var(--text-primary);
 
-    transition: 0.2s ease;
-}
-
-.item:hover .itemDelete {
-    opacity: 1;
 }
 
 
@@ -164,10 +155,6 @@
     .item {
         padding: var(--space-sm) var(--space-md);
         gap: var(--space-xs);
-    }
-    
-    .itemDelete {
-        opacity: 1;
     }
 
     #listFilter:hover, #clearFilter:hover, .itemTag:hover {

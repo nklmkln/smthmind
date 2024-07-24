@@ -13,8 +13,7 @@
 }
 
 #emptyState img {
-    width: 10rem;
-    height: 10rem;
+    width: 12rem;
     margin: var(--space-xl) 0 0 0;
 }
 
