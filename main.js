@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getAndDisplayThoughts() {
   db.thoughts.reverse().toArray().then(displayThoughts);
+  document.getElementById("clearFilter").innerHTML = "SOMETHING FROM YOUR MIND";
   document.getElementById("listFilter").innerHTML = "";
 }
 
@@ -55,7 +56,8 @@ function filterThoughts(filter, value) {
     .toArray()
     .then(displayThoughts);
 
-  document.getElementById("listFilter").innerHTML = " → " + value;
+  document.getElementById("clearFilter").innerHTML = "";
+  document.getElementById("listFilter").innerHTML = "" + value;
 }
 
 function displayThoughts(items) {

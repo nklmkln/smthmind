@@ -1,7 +1,7 @@
 #listHeader {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: var(--space-xs);
 
     width: 100%;
     padding: var(--space-md) var(--space-lg);
@@ -29,8 +29,6 @@
 }
 
 .menuItem {
-    margin-left: var(--space-xs);
-    
     cursor: pointer;
 
     transition: 0.3s ease;
