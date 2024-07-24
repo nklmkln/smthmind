@@ -29,31 +29,6 @@ body {
     flex: 1;
 }
 
-
-:root {
-    font-family: Inter, sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
-    line-height: var(--line-height-base);
-
-    --background: #eee;
-    --text-primary: #333;
-    --text-secondary: #999;
-    --border: #ddd;
-
-    --border-width: 1px;
-
-    --space-xs: 0.5rem;
-    --space-sm: 0.75rem;
-    --space-md: 1rem;
-    --space-lg: 1.25rem;
-    --space-xl: 2rem;
-
-    --line-height-base: 140%;
-
-    --card-rounded: 0.75rem;
-    --button-rounded: 0.375rem;
-  }
-
 @supports (font-variation-settings: normal) {
     :root { font-family: InterVariable, sans-serif; }
 }

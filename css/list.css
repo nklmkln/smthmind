@@ -6,7 +6,7 @@
     width: 100%;
     padding: var(--space-md) var(--space-lg);
 
-    font-size: small;
+    font-size: var(--font-sm);
     color: var(--text-secondary);
     line-height: var(--line-height-base);
 
@@ -63,7 +63,7 @@
     padding: var(--space-md) var(--space-md) 0 var(--space-lg);
     margin-top: var(--space-md);
 
-    font-size: small;
+    font-size: var(--font-sm);
     color: var(--text-secondary);
     font-weight: 500;
 
@@ -121,7 +121,7 @@
     flex-direction: row;
     gap: 0.25rem;
 
-    font-size: small;
+    font-size: var(--font-sm);
     color: var(--text-secondary);
 }
 
@@ -133,7 +133,7 @@
 .itemDelete {
     flex-shrink: 0;
 
-    font-size: small;
+    font-size: var(--font-sm);
     color: var(--text-secondary);
 
     opacity: 0;

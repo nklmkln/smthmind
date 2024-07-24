@@ -16,7 +16,7 @@
     
     height: 1.25rem;
 
-    font-size: small;
+    font-size: var(--font-sm);
     line-height: var(--line-height-base);
     color: var(--text-secondary);
 }
@@ -24,7 +24,7 @@
 #newItemTag {
     width: 15rem;
 
-    font-size: small;
+    font-size: var(--font-sm);
     color: var(--text-secondary);
     line-height: var(--line-height-base);
     text-transform: uppercase;
@@ -37,7 +37,7 @@
 #newItemText {
     flex: 1;
 
-    font-size: x-large;
+    font-size: var(--font-xl);
     line-height: var(--line-height-base);
     resize: none;
     color: var(--text-primary);
@@ -135,7 +135,7 @@ input[type="radio"]:checked + img {
     width: 2.75rem;
     padding: 2px 0 0 0;
 
-    font-size: x-large;
+    font-size: var(--font-xl);
     font-weight: 500;
     color: var(--background);
     
@@ -164,16 +164,16 @@ input[type="radio"]:checked + img {
     }
 
     #tagWrapper {
-        font-size: medium;
+        font-size: var(--font-md);
         height: 1.5rem;
     }
 
     #newItemTag {
-        font-size: medium;
+        font-size: var(--font-md);
     }
 
     #newItemText {
-        font-size: 1.25rem;
+        font-size: var(--font-lg);
         line-height: normal;
     }
 
