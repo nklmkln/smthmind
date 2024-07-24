@@ -92,7 +92,7 @@ function displayThoughts(items) {
       "<div class='item'><img class='itemSentiment' src='assets/" +
       item.mood +
       ".png' alt='" +
-      item.type +
+      item.mood +
       "' /><div class='itemContent'><div class='itemHeader'><div class='itemData'>" +
       timeString +
       itemTag +
