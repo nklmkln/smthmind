@@ -108,3 +108,20 @@ function displayThoughts(items) {
 function deleteItem(timestamp) {
   db.thoughts.delete(timestamp).then(getAndDisplayThoughts);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const exportLink = document.getElementById("exportLink");
+
+  exportLink.onclick = async () => {
+    try {
+      const blob = await db.export({ prettyJson: true, progressCallback });
+      download(blob, "my_smthmind_data.json", "application/json");
+    } catch (error) {
+      console.error("" + error);
+    }
+  };
+});
+
+function progressCallback({ totalRows, completedRows }) {
+  console.log(`Progress: ${completedRows} of ${totalRows} rows completed`);
+}
