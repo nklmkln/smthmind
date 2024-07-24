@@ -89,7 +89,7 @@ function displayThoughts(items) {
         : ` → <div class='itemTag' onClick='filterThoughts("tag", "${item.tag}")'>${item.tag}</div>`;
 
     itemsList +=
-      "<div class='item'><img class='itemSentiment' src='./assets/" +
+      "<div class='item'><img class='itemSentiment' src='assets/" +
       item.mood +
       ".png' alt='" +
       item.type +
