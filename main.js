@@ -46,7 +46,7 @@ function getAndDisplayThoughts() {
   db.thoughts.reverse().toArray().then(displayThoughts);
   document.getElementById("clearFilter").innerHTML = "";
   document.getElementById("listFilter").innerHTML = "MY THOUGHTS";
-  document.getElementById("exportLink").innerHTML = "↓ Export";
+  document.getElementById("exportLink").innerHTML = "Export ↓";
 }
 
 function filterThoughts(filter, value) {

@@ -41,6 +41,15 @@
 
 }
 
+.menuItem a {
+    text-decoration: none;
+    color: var(--text-secondary);
+}
+
+.menuItem a:hover {
+    color: var(--text-primary);
+}
+
 #list {
     display: flex;
     flex-direction: column;
