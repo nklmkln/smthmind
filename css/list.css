@@ -18,6 +18,10 @@
     gap: var(--space-xs);
 }
 
+#filterMood {
+    height: 1.2rem;
+}
+
 #clearFilter {
     flex: 1;
 
@@ -99,6 +103,16 @@
     height: 2rem;
 
     margin-top: var(--space-xs);
+    border-radius: 1rem;
+
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.itemSentiment:hover {
+    transform: scale(1.25);
+
+    transition: 0.4s ease;
 }
 
 .itemContent {

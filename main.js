@@ -57,8 +57,11 @@ function filterThoughts(filter, value) {
     .toArray()
     .then(displayThoughts);
 
+  document.getElementById("listFilter").innerHTML =
+    filter == "mood"
+      ? `<img id='filterMood' src='assets/${value}.png' alt='${value}'></img>`
+      : value;
   document.getElementById("clearFilter").innerHTML = "Clear";
-  document.getElementById("listFilter").innerHTML = value;
   document.getElementById("exportLink").innerHTML = "";
 }
 
@@ -97,7 +100,7 @@ function displayThoughts(items) {
           : ` → <div class='itemTag' onClick='filterThoughts("tag", "${item.tag}")'>${item.tag}</div>`;
 
       itemsList +=
-        "<div class='item'><img class='itemSentiment' src='assets/" +
+        `<div class='item'><img class='itemSentiment' onClick='filterThoughts("mood", "${item.mood}")' src='assets/` +
         item.mood +
         ".png' alt='" +
         item.mood +
