@@ -170,7 +170,7 @@
         color: var(--text-secondary);
     }
 
-    .menuItem:hover, .itemDelete:hover {
+    .menuItem:hover, .menuItem a:hover, .itemDelete:hover {
         color: var(--text-secondary);
     }
 }
