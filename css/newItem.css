@@ -155,10 +155,12 @@ input[type="radio"]:checked + img {
 @media (max-width: 920px) {
     #newItem {
         width: 100%;
-        height: 37svh;
+        height: 40svh;
 
         padding-top: var(--space-sm);
         padding-bottom: var(--space-xl);
+
+        z-index: 1;
     }
 
     #tagWrapper {
@@ -172,7 +174,7 @@ input[type="radio"]:checked + img {
 
     #newItemText {
         font-size: var(--font-lg);
-        line-height: normal;
+        line-height: var(--line-height-base);
     }
 
     .actionButton:hover {
