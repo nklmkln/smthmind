@@ -70,7 +70,7 @@ function displayThoughts(items) {
   let oldDate = "";
   if (items.length == 0) {
     document.getElementById("list").innerHTML =
-      "<div id='emptyState'><img src='assets/empty.png' alt='smthmind logo' /><p>Record your thoughts and mood for reflection. Everything is stored locally in your browser. Export data when you need it.</p></div>";
+      "<div id='emptyState'><img src='assets/empty.png' alt='smthmind logo'/><p>Record your thoughts and mood for reflection. Everything is stored locally in your browser. Export data when you need it.</p></div>";
   } else {
     for (let i = 0; i < items.length; i++) {
       let item = items[i];

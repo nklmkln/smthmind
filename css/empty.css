@@ -13,7 +13,7 @@
 }
 
 #emptyState img {
-    width: 12rem;
+    height: 13rem;
     margin: var(--space-xl) 0 var(--space-xs) 0;
 }
 
@@ -24,7 +24,7 @@
 
 @media (max-width: 920px) {
     #emptyState img {
-        width: 10rem;
+        height: 10rem;
         margin: 5rem 0 0 0;
     }
 }
