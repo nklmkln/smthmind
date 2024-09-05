@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
           text: itemText,
         })
         .then(getAndDisplayThoughts);
-      umami.track("record added");
+      umami.track("record added", { mood: itemMood });
 
       document.getElementById("newItemText").value = "";
       document.getElementById("newItemTag").value = "";
@@ -120,6 +120,7 @@ function displayThoughts(items) {
 
 function deleteItem(timestamp) {
   db.thoughts.delete(timestamp).then(getAndDisplayThoughts);
+  umami.track("record deleted");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -129,8 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const blob = await db.export({ prettyJson: true, progressCallback });
       download(blob, "my_smthmind_data.json", "application/json");
+      umami.track("export success");
     } catch (error) {
       console.error("" + error);
+      umami.track("export error");
     }
   };
 });
