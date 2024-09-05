@@ -21,4 +21,30 @@ function handleShortcut(event) {
       }
       break;
   }
+  if (event.ctrlKey) {
+    event.preventDefault();
+
+    switch (event.key) {
+      case "1":
+        event.preventDefault();
+        document.getElementById("angry").checked = true;
+        break;
+      case "2":
+        event.preventDefault();
+        document.getElementById("sad").checked = true;
+        break;
+      case "3":
+        event.preventDefault();
+        document.getElementById("neutral").checked = true;
+        break;
+      case "4":
+        event.preventDefault();
+        document.getElementById("good").checked = true;
+        break;
+      case "5":
+        event.preventDefault();
+        document.getElementById("happy").checked = true;
+        break;
+    }
+  }
 }
