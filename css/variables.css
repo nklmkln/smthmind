@@ -25,3 +25,12 @@
     --card-rounded: 0.75rem;
     --button-rounded: 0.375rem;
   }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #242424;
+      --text-primary: #eeeeee;
+      --text-secondary: #656565;
+      --border: #323232;
+    }
+  }
