@@ -22,23 +22,34 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       let itemText = document.getElementById("newItemText").value;
       let itemTag = document.getElementById("newItemTag").value.toUpperCase();
-      let itemMood = document.querySelector(
-        `input[name="sentiment"]:checked`
-      ).value;
 
-      db.thoughts
-        .add({
-          timestamp: Date.now(),
-          tag: itemTag,
-          mood: itemMood,
-          text: itemText,
-        })
-        .then(getAndDisplayThoughts);
-      umami.track("record added", { mood: itemMood });
+      let moodCheck = document.querySelector(`input[name="sentiment"]:checked`);
 
-      document.getElementById("newItemText").value = "";
-      document.getElementById("newItemTag").value = "";
-      document.querySelector(`input[name="sentiment"]:checked`).checked = false;
+      if (moodCheck == null) {
+        let moodElement = document.getElementById("moodCheck");
+
+        moodElement.style.animation = "none";
+        moodElement.offsetHeight;
+        moodElement.style.animation = "shake 1s ease-in-out";
+      } else {
+        let itemMood = moodCheck.value;
+
+        db.thoughts
+          .add({
+            timestamp: Date.now(),
+            tag: itemTag,
+            mood: itemMood,
+            text: itemText,
+          })
+          .then(getAndDisplayThoughts);
+        umami.track("record added", { mood: itemMood });
+
+        document.getElementById("newItemText").value = "";
+        document.getElementById("newItemTag").value = "";
+        document.querySelector(
+          `input[name="sentiment"]:checked`
+        ).checked = false;
+      }
     });
 });
 
