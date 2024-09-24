@@ -79,6 +79,21 @@ function filterThoughts(filter, value) {
 function displayThoughts(items) {
   let itemsList = "";
   let oldDate = "";
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
   if (items.length == 0) {
     document.getElementById("list").innerHTML =
       "<div id='emptyState'><img src='assets/empty.png' alt='smthmind logo'/><p>Record your thoughts and mood for reflection. Everything is stored locally in your browser. Export data when you need it.</p></div>";
@@ -91,9 +106,9 @@ function displayThoughts(items) {
         itemsList +=
           "<div class='date'>" +
           new Date(item.timestamp).getDate() +
-          "." +
-          new Date(item.timestamp).getMonth() +
-          "." +
+          " " +
+          monthNames[new Date(item.timestamp).getMonth()] +
+          " " +
           new Date(item.timestamp).getFullYear() +
           "</div>";
       }
