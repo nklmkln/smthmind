@@ -1,4 +1,4 @@
-const CACHE_NAME = `smthmind-v6`;
+const CACHE_NAME = `smthmind-v7`;
 const urlsToCache = [
   "/",
   "/index.html",
@@ -50,6 +50,10 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
